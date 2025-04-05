@@ -54,7 +54,7 @@ pages: {
                 content: "What is Tjakra?";
                 font-weight: bold;
                 p: {
-                    content: "{b: Tjakra} ({i: Cakra}) is a {i: markup language} that can be used to create {b: PDF documents} with simple syntax. The name {b: Tjakra} is taken from the name of one of the cultural heritage sites in {b: Aceh}, namely the {i: Cakra Donya Bell}. {b: Tjakra} is made of {i: Javascript}, {i: HTML}, and {i: CSS}. {b: Tjakra} is expected to be an {i: easier} and {i: more powerful} {i: markup language} than other {i: markup languages} ​​such as {b: LaTeX} dan {b: Markdown}.";
+                    content: "{b: Tjakra} ({i: cakra}) is a {i: markup language} that can be used to create {b: PDF documents} with simple syntax. The name {b: Tjakra} is taken from the name of one of the cultural heritage sites in {b: Aceh}, namely the {i: Cakra Donya Bell}. {b: Tjakra} is made of {i: Javascript}, {i: HTML}, and {i: CSS}. {b: Tjakra} is expected to be an {i: easier} and {i: more powerful} {i: markup language} than other {i: markup languages} ​​such as {b: LaTeX} dan {b: Markdown}.";
                     text-align: justify;
                 }
             }
@@ -519,7 +519,7 @@ pages: {
         ol: {
             type: letter E;
             li: {
-                content: "Tjakra Inline Style";
+                content: "Tjakra Inline Styles";
                 font-weight: bold;
 
                 section: {
