@@ -18,7 +18,7 @@
 Tjakra (Cakra) is a markup language that can be used to create PDF documents with simple syntax. The name Tjakra is taken from the name of one of the cultural heritage sites in Aceh, namely the Cakra Donya Bell. Tjakra is made of Javascript, HTML, and CSS. Tjakra is expected to be an easier and more powerful markup language than other markup languages such as LaTeX dan Markdown.
 </p>
 
-<a href="https://github.com/naufalhanif25/tjakra-markup-language/raw/refs/heads/main/release-builds/zenosent-win32-ia32.zip" download>Windows</a>
+<a href="https://github.com/naufalhanif25/tjakra-markup-language/blob/main/output/tjakra.pdf">Tjakra Documentation</a>
 
 <!-- Donation -->
 <h2>
