@@ -281,6 +281,10 @@ tjakra --version
             <td align="justify">To determine the margin (normal, narrow, moderate, wide, or custom margins in inches (e.g., "3+3+3+4", "[top][right][bottom][left]")</td>
         </tr>
         <tr>
+            <td align="center">align</td>
+            <td align="justify">To align elements within a container (header or footer) (left, center, or right)</td>
+        </tr>
+        <tr>
             <td align="center">src</td>
             <td align="justify">Image source (can be a link or a path)</td>
         </tr>
