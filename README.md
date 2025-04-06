@@ -23,6 +23,76 @@
 Tjakra (cakra) is a markup language that can be used to create PDF documents with simple syntax. The name Tjakra is taken from the name of one of the cultural heritage sites in Aceh, namely the Cakra Donya Bell. Tjakra is made of Javascript, HTML, and CSS. Tjakra is expected to be an easier and more powerful markup language than other markup languages such as LaTeX dan Markdown.
 </p>
 
+<!-- Installation -->
+<h2>
+    🛠️ Installation
+</h2>
+<h4>Linux & MacOS</h4>
+<ol>
+    <li>
+        Download build/tjakra-linux via the following link:
+        <ul>
+            <li><a href="https://github.com/naufalhanif25/tjakra-markup-language/blob/main/build/tjakra-linux" download>Linux</a></li>
+            <li><a href="https://github.com/naufalhanif25/tjakra-markup-language/blob/main/build/tjakra-macos" download>MacOS</a></li>
+        </ul>
+    </li>
+    <li>
+        Download setup.sh via the following link: <a href="https://github.com/naufalhanif25/tjakra-markup-language/blob/main/setup/setup.sh" download>setup.sh</a>
+    </li>
+    <li>
+        Change setup.sh permission to executable
+        <pre>
+chmod +x setup.sh
+        </pre>
+    </li>
+    <li>
+        Run setup.sh
+        <pre>
+./setup.sh
+        </pre>
+    </li>
+    <li>
+        Check Tjakra installation
+        <pre>
+tjakra --version
+        </pre>
+    </li>
+</ol>
+
+<h4>Windows</h4>
+<ol>
+    <li>
+        Download build/tjakra-linux via the following link: <a href="https://github.com/naufalhanif25/tjakra-markup-language/blob/main/build/tjakra-win.exe" download>Windows</a>
+    </li>
+    <li>
+        Copy tjakra-win.exe
+    </li>
+    <li>
+        Create a new folder in C: with the name Tjakra
+    </li>
+    <li>
+        Paste tjakra-win.exe into the Tjakra folder
+    </li>
+    <li>
+        Copy the path of the directory
+        <pre>
+C:\Tjakra
+        </pre>
+    </li>
+    <li>
+        Open Environment Variables
+    </li>
+    <li>
+        Add C:\Tjakra to the Path variable
+    </li>
+    <li>
+        Check Tjakra installation
+        <pre>
+tjakra --version
+        </pre>
+    </li>
+</ol>
+
 <!-- Documentation -->
 <h2>
     📚 Documentation
@@ -298,6 +368,15 @@ pages: {
         }
     }
 }
+</pre>
+
+Run the Tjakra code using the following command:
+<pre>
+    tjakra -s helloworld.tj -p helloworld.pdf
+</pre>
+or
+<pre>
+    tjakra -s helloworld.tj
 </pre>
 
 <!-- Donation -->
