@@ -6,8 +6,6 @@
 <!-- Badges -->
 <div align="center">
     <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" /> 
-    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" /> 
-    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
 </div>
 <br>
 <!-- Image -->
@@ -20,7 +18,7 @@
     📝 Description
 </h2>
 <p align="justify">
-Tjakra (cakra) is a markup language that can be used to create PDF documents with simple syntax. The name Tjakra is taken from the name of one of the cultural heritage sites in Aceh, namely the Cakra Donya Bell. Tjakra is made of Javascript, HTML, and CSS. Tjakra is expected to be an easier and more powerful markup language than other markup languages such as LaTeX dan Markdown.
+Tjakra (cakra) is a markup language that can be used to create PDF documents with simple syntax. The name Tjakra is taken from the name of one of the cultural heritage sites in Aceh, namely the Cakra Donya Bell. Tjakra is made of using Javascript, HTML, and CSS. Tjakra is expected to be an easier and more powerful markup language than other markup languages such as LaTeX dan Markdown.
 </p>
 
 <!-- Installation -->
