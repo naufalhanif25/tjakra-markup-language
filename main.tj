@@ -553,6 +553,16 @@ pages: {
                         }
                         tr: {
                             td: {
+                                content: "align";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "To align elements within a container (header or footer) (left, center, right)";
+                                text-align: justify;
+                            }
+                        }
+                        tr: {
+                            td: {
                                 content: "src";
                                 text-align: center;
                             }
