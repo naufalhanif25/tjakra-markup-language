@@ -19,8 +19,6 @@
  * - Node.js built-in 'fs' module for file operations.
  * - 'puppeteer' for headless browser-based PDF rendering.
  * - 'commander' for argument parsing and CLI structure.
- *
- * Usage example: node tjakra.js -s main.tj -p output/tjakra.pdf
  */
 
 // Import necessary modules
@@ -126,13 +124,6 @@ function tokenize(line, lineNumber = 0) {
 
     // Skip empty lines or comment-only lines
     if (!line || line.startsWith('//')) return; 
-
-    const commentIndex = line.indexOf('//');
-    
-    // Strip inline comments (e.g., key: value; // some comment)
-    if (commentIndex !== -1) {
-        line = line.slice(0, commentIndex).trim();  // Remove comment part
-    }
 
     try {
         // Handle element declaration line (e.g., main: { )
@@ -398,7 +389,7 @@ function jsonToHtml(json) {
             // Validate supported HTML tags
             if (![
                 "config", "pages", "header", "main", "footer", "h1", "h2", "h3", "h4", "h5", "h6", "p", "ul", "ol", "li", "img",
-                "table", "thead", "tbody", "tr", "th", "td", "section"
+                "table", "thead", "tbody", "tr", "th", "td", "section", "link"
             ].includes(elementName)) {
                 throw new Error(`Invalid element '${elementName}'`);
             }
@@ -444,6 +435,30 @@ function jsonToHtml(json) {
                         styles.push(`justify-content: ${prop.value}`);
                     }
                 }
+                // link element attributes
+                else if (elementName === "link") {
+                    let href = "";
+
+                    properties.forEach(prop => {
+                        if (prop.key === "ref") {
+                            href = prop.value.replace(/^["']|["']$/g, '');
+
+                            attributes.push(`href="${href}"`);
+                        } 
+                        else if (prop.key === "content") {
+                            content = prop.value.replace(/^["']|["']$/g, '');
+                        } 
+                        else if ([
+                            "line-height", "space-bp", "space-ap", "font-family", "font-size", "font-weight", "font-style", 
+                            "color", "text-align", "text-decoration", "width", "height"
+                        ].includes(prop.key)) {
+                            styles.push(`${prop.key}: ${prop.value}`);
+                        } 
+                        else {
+                            throw new Error(`Invalid property '${prop.key}' on element '${elementName}'`);
+                      }
+                    });
+                }                  
                 // Image element attributes & base64 conversion
                 else if (elementName === "img") {
                     if (!["src", "alt", "width", "height", "align"].includes(prop.key)) {
@@ -488,6 +503,10 @@ function jsonToHtml(json) {
             // Self-closing image tag
             if (elementName === "img") {
                 return `<img ${attrStr}${styleAttr ? ` ${styleAttr}` : ''} />`;
+            }
+            // Create link element
+            else if (elementName === "link") {
+                return `<a ${attrStr}${styleAttr ? ` ${styleAttr}` : ``}>${content}</a>`
             }
     
             // Render element with content and children, including inline formatting tags
@@ -543,6 +562,7 @@ function jsonToHtml(json) {
     
         // Final HTML document template
         return `
+            <!DOCTYPE html>
             <html>
                 <head>
                     <meta charset="UTF-8">
@@ -674,7 +694,7 @@ function startSpinner() {
 program
     .name("Tjakra")  // CLI name
     .description("Tjakra is a language used to create PDF documents using simple lines of code.")
-    .version("1.0.0-beta")
+    .version("1.0.0-alpha")
     .option("-s, --source <file>", "Specify the Tjakra source file")  // Source input
     .option("-p, --path <output>", "Specify the output PDF path")  // Optional output path
     .helpOption("-h, --help", "Show help information")  // Help flag
