@@ -32,37 +32,37 @@ Tjakra (cakra) is a markup language that can be used to create PDF documents wit
     <li>
         Download build/tjakra-linux via the following link:
         <ul>
-            <li><a href="https://github.com/naufalhanif25/tjakra-markup-language/blob/main/build/tjakra-linux" download>Linux</a></li>
-            <li><a href="https://github.com/naufalhanif25/tjakra-markup-language/blob/main/build/tjakra-macos" download>MacOS</a></li>
+            <li><a href="https://raw.githubusercontent.com/naufalhanif25/tjakra-markup-language/refs/heads/main/build/tjakra-linux" download>Linux</a></li>
+            <li><a href="https://raw.githubusercontent.com/naufalhanif25/tjakra-markup-language/refs/heads/main/build/tjakra-macos" download>MacOS</a></li>
         </ul>
     </li>
     <li>
-        Download setup.sh via the following link: <a href="https://github.com/naufalhanif25/tjakra-markup-language/blob/main/setup/setup.sh" download>setup.sh</a>
+        Download setup.sh via the following link: <a href="https://raw.githubusercontent.com/naufalhanif25/tjakra-markup-language/refs/heads/main/setup/setup.sh" download>setup.sh</a>
     </li>
     <li>
         Change setup.sh permission to executable
-        <pre>
+        <pre><code>
 chmod +x setup.sh
-        </pre>
+        </code></pre>
     </li>
     <li>
         Run setup.sh
-        <pre>
+        <pre><code>
 ./setup.sh
-        </pre>
+        </code></pre>
     </li>
     <li>
         Check Tjakra installation
-        <pre>
+        <pre><code>
 tjakra --version
-        </pre>
+        </code></pre>
     </li>
 </ol>
 
 <h4>Windows</h4>
 <ol>
     <li>
-        Download build/tjakra-linux via the following link: <a href="https://github.com/naufalhanif25/tjakra-markup-language/blob/main/build/tjakra-win.exe" download>Windows</a>
+        Download build/tjakra-linux via the following link: <a href="https://raw.githubusercontent.com/naufalhanif25/tjakra-markup-language/refs/heads/main/build/tjakra-win.exe" download>Windows</a>
     </li>
     <li>
         Copy tjakra-win.exe
@@ -75,9 +75,9 @@ tjakra --version
     </li>
     <li>
         Copy the path of the directory
-        <pre>
+        <pre><code>
 C:\Tjakra
-        </pre>
+        </code></pre>
     </li>
     <li>
         Open Environment Variables
@@ -87,9 +87,9 @@ C:\Tjakra
     </li>
     <li>
         Check Tjakra installation
-        <pre>
+        <pre><code>
 tjakra --version
-        </pre>
+        </code></pre>
     </li>
 </ol>
 
@@ -149,6 +149,10 @@ tjakra --version
         <tr>
             <td align="center">img</td>
             <td align="justify">Image element (Same as HTML img tag)</td>
+        </tr>
+        <tr>
+            <td align="center">link</td>
+            <td align="justify">Hyperlink element (Same as HTML a tag)</td>
         </tr>
         <tr>
             <td align="center">table</td>
@@ -211,14 +215,6 @@ tjakra --version
     </thead>
     <tbody>
         <tr>
-            <td align="center">papersize</td>
-            <td align="justify">To determine the paper size (letter, legal, tabloid, ledger, A0, A1, A2, A3, A4, A5, A6, or custom paper sizes in inches (e.g., "8.27*12.99", " [width][height]"))</td>
-        </tr>
-        <tr>
-            <td align="center">margin</td>
-            <td align="justify">To determine the margin (normal, narrow, moderate, wide, or custom margins in inches (e.g., "3+3+3+4", "[top][right][bottom][left]")</td>
-        </tr>
-        <tr>
             <td align="center">line-height</td>
             <td align="justify">To determine the row height (px (pixel), pt(point), em, rem, % (percent), vh/vw (viewport height/width), vmin/vmax, pt (point), cm, mm, in (inch), or ex/ch)</td>
         </tr>
@@ -265,6 +261,38 @@ tjakra --version
         <tr>
             <td align="center">height</td>
             <td align="justify">To determine the height of the element (px (pixel), pt(point), em, rem, % (percent), vh/vw (viewport height/width), vmin/vmax, cm, mm, in (inch), or ex/ch)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Tjakra Special Properties</h4>
+<table style="font-weight: normal;">
+    <thead>
+        <tr>
+            <th align="center">Property</th>
+            <th align="center">Explanation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="center">papersize</td>
+            <td align="justify">To determine the paper size (letter, legal, tabloid, ledger, A0, A1, A2, A3, A4, A5, A6, or custom paper sizes in inches (e.g., "8.27*12.99", " [width][height]"))</td>
+        </tr>
+        <tr>
+            <td align="center">margin</td>
+            <td align="justify">To determine the margin (normal, narrow, moderate, wide, or custom margins in inches (e.g., "3+3+3+4", "[top][right][bottom][left]")</td>
+        </tr>
+        <tr>
+            <td align="center">src</td>
+            <td align="justify">Image source (can be a link or a path)</td>
+        </tr>
+        <tr>
+            <td align="center">alt</td>
+            <td align="justify">Alternative text displayed if the image is not available</td>
+        </tr>
+        <tr>
+            <td align="center">ref</td>
+            <td align="justify">Specifies the destination link</td>
         </tr>
     </tbody>
 </table>
@@ -322,7 +350,7 @@ Further documentation can be seen in the following document: <a href="https://gi
 <h2>
     📄 Example Code
 </h2>
-<pre>
+<pre><code>
 // helloworld.tj
 // Document configuration
 config: {
@@ -368,16 +396,16 @@ pages: {
         }
     }
 }
-</pre>
+</code></pre>
 
 Run the Tjakra code using the following command:
-<pre>
+<pre><code>
     tjakra -s helloworld.tj -p helloworld.pdf
-</pre>
+</code></pre>
 or
-<pre>
+<pre><code>
     tjakra -s helloworld.tj
-</pre>
+</code></pre>
 
 <!-- Donation -->
 <h2>
