@@ -180,6 +180,20 @@ pages: {
                         }
                         tr: {
                             td: {
+                                content: "link";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Hyperlink element (Same as HTML a tag). Example: ";
+                                link: {
+                                    ref: "https://github.com/naufalhanif25/tjakra-markup-language"
+                                    content: "GitHub";
+                                    text-align: center;
+                                }
+                            }
+                        }
+                        tr: {
+                            td: {
                                 content: "table";
                                 text-align: center;
                             }
@@ -331,7 +345,7 @@ pages: {
                 font-weight: bold;
 
                 section: {
-                    content: "The following is a table listing Tjakra's special elements:";
+                    content: "The following is a table listing Tjakra properties:";
                     // Table
                     table: {
                         tr: {
@@ -343,26 +357,6 @@ pages: {
                             th: {
                                 content: "{b: Explanation}";
                                 text-align: center;
-                            }
-                        }
-                        tr: {
-                            td: {
-                                content: "papersize";
-                                text-align: center;
-                            }
-                            td: {
-                                content: "To determine the paper size (letter, legal, tabloid, ledger, A0, A1, A2, A3, A4, A5, A6, or custom paper sizes in inches (e.g., "8.27*12.99", "[width][height]"))";
-                                text-align: justify;
-                            }
-                        }
-                        tr: {
-                            td: {
-                                content: "margin";
-                                text-align: center;
-                            }
-                            td: {
-                                content: "To determine the margin (normal, narrow, moderate, wide, or custom margins in inches (e.g., "3+3+3+4", "[top][right][bottom][left]")";
-                                text-align: justify;
                             }
                         }
                         tr: {
@@ -484,7 +478,7 @@ pages: {
                     
                     // Table caption
                     p: {
-                        content: "Table: Tjakra's special elements";
+                        content: "Table: Tjakra properties";
                         text-align: center;
                     }
                 }
@@ -518,6 +512,82 @@ pages: {
         // List (ordered list)
         ol: {
             type: letter E;
+            li: {
+                content: "Tjakra's Special Properties";
+                font-weight: bold;
+
+                section: {
+                    content: "The following is a table listing Tjakra's Special Properties:";
+                    // Table
+                    table: {
+                        tr: {
+                            th: {
+                                content: "{b: Property}";
+                                text-align: center;
+                                width: 20%;
+                            }
+                            th: {
+                                content: "{b: Explanation}";
+                                text-align: center;
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "papersize";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "To determine the paper size (used in the config element) (letter, legal, tabloid, ledger, A0, A1, A2, A3, A4, A5, A6, or custom paper sizes in inches (e.g., "8.27*12.99", "[width][height]"))";
+                                text-align: justify;
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "margin";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "To determine the margin (used in the config element) (normal, narrow, moderate, wide, or custom margins in inches (e.g., "3+3+3+4", "[top][right][bottom][left]")";
+                                text-align: justify;
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "src";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Image source (can be a link or a path)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "alt";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Alternative text displayed if the image is not available";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "ref";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Specifies the destination link";
+                            }
+                        }
+                    }
+                    
+                    // Table caption
+                    p: {
+                        content: "Table: Tjakra's Special Properties";
+                        text-align: center;
+                    }
+                }
+            }
+            !line-break
             li: {
                 content: "Tjakra Inline Styles";
                 font-weight: bold;
