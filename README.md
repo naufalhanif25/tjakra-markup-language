@@ -39,21 +39,21 @@ Tjakra (cakra) is a markup language that can be used to create PDF documents wit
     </li>
     <li>
         Change setup.sh permission to executable
-        <pre><code>
+<pre><code>
 chmod +x setup.sh
-        </code></pre>
+</code></pre>
     </li>
     <li>
         Run setup.sh
-        <pre><code>
+<pre><code>
 ./setup.sh
-        </code></pre>
+</code></pre>
     </li>
     <li>
         Check Tjakra installation
-        <pre><code>
+<pre><code>
 tjakra --version
-        </code></pre>
+</code></pre>
     </li>
 </ol>
 
@@ -73,9 +73,9 @@ tjakra --version
     </li>
     <li>
         Copy the path of the directory
-        <pre><code>
+<pre><code>
 C:\Tjakra
-        </code></pre>
+</code></pre>
     </li>
     <li>
         Open Environment Variables
@@ -85,9 +85,9 @@ C:\Tjakra
     </li>
     <li>
         Check Tjakra installation
-        <pre><code>
+<pre><code>
 tjakra --version
-        </code></pre>
+</code></pre>
     </li>
 </ol>
 
@@ -402,11 +402,11 @@ pages: {
 
 Run the Tjakra code using the following command:
 <pre><code>
-    tjakra -s helloworld.tj -p helloworld.pdf
+tjakra -s helloworld.tj -p helloworld.pdf
 </code></pre>
 or
 <pre><code>
-    tjakra -s helloworld.tj
+tjakra -s helloworld.tj
 </code></pre>
 
 <!-- Donation -->
