@@ -1,0 +1,218 @@
+// Page 2
+// Header section
+header: {
+    align: left;
+    p: {
+        content: "This document was created using Tjakra";
+        text-align: left;
+        font-size: 10pt;
+    }
+}
+
+// Main section
+main: {
+    // List (ordered list)
+    ol: {
+        type: letter C;
+        li: {
+            content: "Tjakra Special Elements";
+            font-weight: bold;
+
+            section: {
+                content: "The following is a table listing Tjakra's special elements:";
+                // Table
+                table: {
+                    tr: {
+                        th: {
+                            content: "{b: Element}";
+                            text-align: center;
+                            width: 20%;
+                        }
+                        th: {
+                            content: "{b: Explanation}";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "!line-break";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "For a line break, same as "enter" or HTML br tag";
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "!tracer-round";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Horizontal line (Same as HTML hr tag)";
+                        }
+                    }
+                }
+                
+                // Table caption
+                p: {
+                    content: "Table: Tjakra's special elements";
+                    text-align: center;
+                }
+            }
+        }
+        !line-break
+        li: {
+            content: "Tjakra Properties";
+            font-weight: bold;
+
+            section: {
+                content: "The following is a table listing Tjakra properties:";
+                // Table
+                table: {
+                    tr: {
+                        th: {
+                            content: "{b: Property}";
+                            text-align: center;
+                            width: 20%;
+                        }
+                        th: {
+                            content: "{b: Explanation}";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "line-height";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To determine the row height (px (pixel), pt(point), em, rem, % (percent), vh/vw (viewport height/width), vmin/vmax, pt (point), cm, mm, in (inch), or ex/ch)";
+                            text-align: justify;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "space-bp";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To determine the spacing before a paragraph";
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "space-ap";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To determine the spacing after a paragraph";
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "font-family";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To select a font family (Same as CSS) such as Arial, Helvetica, Verdana, Tahoma, Trebuchet MS, Lucida Sans Unicode, Times New Roman, Georgia, Palatino Linotype, Book Antiqua, Courier New, Lucida Console, Impact, and Comic Sans MS";
+                            text-align: justify;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "font-size";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To determine the font size (px (pixel), pt(point), em, rem, % (percent), vh/vw (viewport height/width), vmin/vmax, cm, mm, in (inch), or ex/ch)";
+                            text-align: justify;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "font-weight";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To determine the font weight (normal, bold, lighter, bolder, or 100-900)";
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "font-style";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To determine the font style (normal, italic, oblique)";
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "color";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To change the text color, the value can be a color name (red, green, blue), hex code, hsl or rgb";
+                            text-align: justify;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "text-align";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To change the text align (left, center, right)";
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "text-decoration";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To change the text decoration (none, underline, overline, line-through, blink, inherit, initial, unset)";
+                            text-align: justify;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "width";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To determine the width of the element (px (pixel), pt(point), em, rem, % (percent), vh/vw (viewport height/width), vmin/vmax, cm, mm, in (inch), or ex/ch)";
+                            text-align: justify;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "height";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To determine the height of the element (px (pixel), pt(point), em, rem, % (percent), vh/vw (viewport height/width), vmin/vmax, cm, mm, in (inch), or ex/ch)";
+                            text-align: justify;
+                        }
+                    }
+                }
+                
+                // Table caption
+                p: {
+                    content: "Table: Tjakra properties";
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+// Footer section
+footer: {
+    align: right;
+    p: {
+        content: "{pgnum}";
+        text-align: right;
+        font-size: 10pt;
+    }
+}

@@ -1,0 +1,368 @@
+// Page 3
+// Header section
+header: {
+    align: left;
+    p: {
+        content: "This document was created using Tjakra";
+        text-align: left;
+        font-size: 10pt;
+    }
+}
+
+// Main section
+main: {
+    // List (ordered list)
+    ol: {
+        type: letter E;
+        li: {
+            content: "Tjakra's Special Properties";
+            font-weight: bold;
+
+            section: {
+                content: "The following is a table listing Tjakra's Special Properties:";
+                // Table
+                table: {
+                    tr: {
+                        th: {
+                            content: "{b: Property}";
+                            text-align: center;
+                            width: 20%;
+                        }
+                        th: {
+                            content: "{b: Explanation}";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "papersize";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To determine the paper size (used in the config element) (letter, legal, tabloid, ledger, A0, A1, A2, A3, A4, A5, A6, or custom paper sizes in inches (e.g., "8.27*12.99", "[width][height]"))";
+                            text-align: justify;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "margin";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To determine the margin (used in the config element) (normal, narrow, moderate, wide, or custom margins in inches (e.g., "3+3+3+4", "[top][right][bottom][left]")";
+                            text-align: justify;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "align";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "To align elements within a container (header, section, or footer) (left, center, right)";
+                            text-align: justify;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "src";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Image source (can be a link or a path)";
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "alt";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Alternative text displayed if the image is not available";
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "ref";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Specifies the destination link";
+                        }
+                    }
+                }
+                
+                // Table caption
+                p: {
+                    content: "Table: Tjakra's Special Properties";
+                    text-align: center;
+                }
+            }
+        }
+        !line-break
+        li: {
+            content: "Tjakra Inline Styles";
+            font-weight: bold;
+
+            section: {
+                content: "The following is a table listing Tjakra's inline styles:";
+                // Table
+                table: {
+                    tr: {
+                        th: {
+                            content: "{b: Element}";
+                            text-align: center;
+                            width: 20%;
+                        }
+                        th: {
+                            content: "{b: Explanation}";
+                            text-align: center;
+                        }
+                        th: {
+                            content: "{b: Example}";
+                            text-align: center;
+                            width: 40%;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "\{b: ...}";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Bold text";
+                            text-align: justify;
+                        }
+                        td: {
+                            content: "\{b: Hello} become {b: Hello}";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "\{i: ...}";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Italic text";
+                            text-align: justify;
+                        }
+                        td: {
+                            content: "\{i: Hello} become {i: Hello}";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "\{u: ...}";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Underline text";
+                            text-align: justify;
+                        }
+                        td: {
+                            content: "\{u: Hello} become {u: Hello}";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "\{sup: ...}";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Superscript";
+                            text-align: justify;
+                        }
+                        td: {
+                            content: "x\{sup: 2} become x{sup: 2}";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "\{sub: ...}";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Subscript";
+                            text-align: justify;
+                        }
+                        td: {
+                            content: "CO\{sub: 2} become CO{sub: 2}";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "\{hl: ...}";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Highlight text";
+                            text-align: justify;
+                        }
+                        td: {
+                            content: "\{hl: Hello} become {hl: Hello}";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "\{del: ...}";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Deleted text";
+                            text-align: justify;
+                        }
+                        td: {
+                            content: "\{del: Hello} become {del: Hello}";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "\{line-break}";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "For a line break, same as "enter" or HTML br tag";
+                            text-align: justify;
+                        }
+                        td: {
+                            content: "Hello\{line-break}World become Hello{line-break}World";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "\{tracer-round}";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Horizontal line (Same as HTML hr tag)";
+                            text-align: justify;
+                        }
+                        td: {
+                            content: "\{tracer-round} become {tracer-round}";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "\{indent}";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Indentation (Same as 4 times &nbsp; in HTML)";
+                            text-align: justify;
+                        }
+                        td: {
+                            content: "Hello\{indent}World become Hello{indent}World";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "\{pgnum}";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Create page numbers automatically and sequentially";
+                            text-align: justify;
+                        }
+                        td: {
+                            content: "1, 2, 3, ..., n";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "Special punctuations";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Special punctuations (Same as HTML). ";
+                            text-align: justify;
+                            link: {
+                                content: "Read docs";
+                                ref: "https://html.spec.whatwg.org/multipage/named-characters.html"; 
+                                text-align: justify;
+                            }
+                        }
+                        td: {
+                            content: "&int{semi} (HTML) become \{int} (Tjakra) become {int}";
+                            text-align: center;
+                        }
+                    }
+                }
+                
+                // Table caption
+                p: {
+                    content: "Table: Tjakra's inline styles";
+                    text-align: center;
+                }
+            }
+        }
+        !line-break
+        li: {
+            content: "Tjakra Keywords";
+            font-weight: bold;
+
+            section: {
+                content: "The following is a table listing Tjakra's keywords:";
+                // Table
+                table: {
+                    tr: {
+                        th: {
+                            content: "{b: Keyword}";
+                            text-align: center;
+                            width: 20%;
+                        }
+                        th: {
+                            content: "{b: Explanation}";
+                            text-align: center;
+                            width: 50%;
+                        }
+                        th: {
+                            content: "{b: Example}";
+                            text-align: center;
+                        }
+                    }
+                    tr: {
+                        td: {
+                            content: "@include";
+                            text-align: center;
+                        }
+                        td: {
+                            content: "Including additional Tjakra files into the main Tjakra file";
+                            text-align: justify;
+                        }
+                        td: {
+                            content: "@include: "abstract.tj";";
+                            text-align: center;
+                        }
+                    }
+                }
+                
+                // Table caption
+                p: {
+                    content: "Table: Tjakra keywords";
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+// Footer section
+footer: {
+    align: right;
+    p: {
+        content: "{pgnum}";
+        text-align: right;
+        font-size: 10pt;
+    }
+}

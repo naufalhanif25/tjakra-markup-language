@@ -1,0 +1,291 @@
+// File name: main.tj
+// Document configuration
+config: {
+    papersize: A4;
+    margin: normal;
+    line-height: 1.0;
+    space-bp: none;
+    space-ap: none;
+    font-family: Times New Roman; 
+    font-size: 12pt; 
+    font-weight: normal;
+    font-style: normal;
+    text-align: left;
+}
+pages: {
+    // Page 1
+    // Header section
+    header: {
+        align: left;
+        p: {
+            content: "This document was created using Tjakra";
+            text-align: left;
+            font-size: 10pt;
+        }
+    }
+    
+    // Main section
+    main: {
+        // Title
+        h1: {
+            content: "Tjakra Documentation";
+            text-align: center;
+            font-size: 16pt;
+            font-weight: bold;
+        }
+
+        !line-break
+
+        // Image
+        img: {
+            src: "assets/img/tjakra.png";
+            alt: "Image";
+            width: 125px;
+            height: auto;
+            align: center;
+        }
+
+        !line-break
+
+        // List (ordered list)
+        ol: {
+            type: letter;
+            li: {
+                content: "What is Tjakra?";
+                font-weight: bold;
+                p: {
+                    content: "{b: Tjakra} ({i: cakra}) is a {i: markup language} that can be used to create {b: PDF documents} with simple syntax. The name {b: Tjakra} is taken from the name of one of the cultural heritage sites in {b: Aceh}, namely the {i: Cakra Donya Bell}. {b: Tjakra} is made of {i: Javascript}, {i: HTML}, and {i: CSS}. {b: Tjakra} is expected to be an {i: easier} and {i: more powerful} {i: markup language} than other {i: markup languages} ​​such as {b: LaTeX} dan {b: Markdown}.";
+                    text-align: justify;
+                }
+            }
+            !line-break
+            li: {
+                content: "Tjakra Elements";
+                font-weight: bold;
+
+                p: {
+                    content: "The following is a table listing the Tjakra elements:";
+                    // Table
+                    table: {
+                        tr: {
+                            th: {
+                                content: "{b: Element}";
+                                text-align: center;
+                                width: 20%;
+                            }
+                            th: {
+                                content: "{b: Explanation}";
+                                text-align: center;
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "config";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "To configure the document";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "pages";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "As a container for the entire contents of the document";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "header";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "The top container of a page";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "main";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "The main container that can be filled with various elements and properties";
+                                text-align: justify;
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "footer";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "The bottom container of a page";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "section";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Additional container to hold elements";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "h1 - h6";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Header element (Same as HTML h1-h6 tag)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "p";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Paragraf element (Same as HTML p tag)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "ul";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Unordered list element (Same as HTML ul tag)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "ol";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Ordered list element (Same as HTML ol tag)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "li";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "List element (Same as HTML li tag)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "img";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Image element (Same as HTML img tag)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "link";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Hyperlink element (Same as HTML a tag). Example: ";
+                                link: {
+                                    ref: "https://github.com/naufalhanif25/tjakra-markup-language"
+                                    content: "Github";
+                                    text-align: center;
+                                }
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "table";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Table element (Same as HTML table tag)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "thead";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Table head section element (Same as HTML thead tag)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "tbody";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Table body section element (Same as HTML tbody tag)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "tfoot";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Table footer element (Same as HTML tfoot tag)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "tr";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Table row element (Same as HTML tr tag)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "th";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Table header element (Same as HTML th tag)";
+                            }
+                        }
+                        tr: {
+                            td: {
+                                content: "td";
+                                text-align: center;
+                            }
+                            td: {
+                                content: "Table data element (Same as HTML td tag)";
+                            }
+                        }
+                    }
+                    
+                    // Table caption
+                    p: {
+                        content: "Table: Tjakra elements";
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+
+    // Footer section
+    footer: {
+        align: right;
+        p: {
+            content: "{pgnum}";
+            text-align: right;
+            font-size: 10pt;
+        }
+    }
+
+    @include: "source/sc_page.tj";
+    @include: "source/th_page.tj";
+}
