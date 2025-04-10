@@ -125,6 +125,10 @@ tjakra --version
             <td align="justify">The bottom container of a page</td>
         </tr>
         <tr>
+            <td align="center">section</td>
+            <td align="justify">Additional container to hold elements</td>
+        </tr>
+        <tr>
             <td align="center">h1 - h6</td>
             <td align="justify">Header element (Same as HTML h1-h6 tag)</td>
         </tr>
@@ -282,7 +286,7 @@ tjakra --version
         </tr>
         <tr>
             <td align="center">align</td>
-            <td align="justify">To align elements within a container (header or footer) (left, center, or right)</td>
+            <td align="justify">To align elements within a container (header, section, or footer) (left, center, or right)</td>
         </tr>
         <tr>
             <td align="center">src</td>
@@ -341,8 +345,36 @@ tjakra --version
             <td align="justify">For a line break, same as "enter" or HTML br tag</td>
         </tr>
         <tr>
+            <td align="center">{indent}</td>
+            <td align="justify">Indentation (Same as 4 times &nbsp&semi; in HTML)</td>
+        </tr>
+        <tr>
             <td align="center">{tracer-round}</td>
             <td align="justify">Horizontal line (Same as HTML hr tag)</td>
+        </tr>
+        <tr>
+            <td align="center">{pgnum}</td>
+            <td align="justify">Create page numbers automatically and sequentially</td>
+        </tr>
+        <tr>
+            <td align="center">Special punctuations</td>
+            <td align="justify">Special punctuations (same as HTML). <a href="https://html.spec.whatwg.org/multipage/named-characters.html">Read docs</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Tjakra Keywords</h4>
+<table style="font-weight: normal;">
+    <thead>
+        <tr>
+            <th align="center">Keyword</th>
+            <th align="center">Explanation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="center">@include</td>
+            <td align="justify">Including additional Tjakra files into the main Tjakra file</td>
         </tr>
     </tbody>
 </table>
@@ -369,8 +401,7 @@ config: {
 }
 pages: {
     // Page 1
-    // Header section
-    header: {
+    header: { // Header section
         align: left;
         p: {
             content: "Hello World";
@@ -378,36 +409,37 @@ pages: {
             font-size: 10pt;
         }
     }
-    // Main section
-    main: {
+    main: { // Main section
         // Title
         h1: {
-            content: "Hello World";
+            content: "{i: Hello World}";
             text-align: center;
             font-size: 16pt;
             font-weight: bold;
         }
     }
-    // Footer section
-    footer: {
+    footer: { // Footer section
         align: right;
         p: {
-            content: "Hello World";
+            content: "{pgnum}";
             text-align: right;
             font-size: 10pt;
         }
     }
+
+    @include: "extend.tj";
 }
 </code></pre>
 
 Run the Tjakra code using the following command:
 <pre><code>
-tjakra -s helloworld.tj -p helloworld.pdf
+tjakra -s helloworld.tj -o helloworld.pdf
 </code></pre>
 or
 <pre><code>
 tjakra -s helloworld.tj
 </code></pre>
+If the Tjakra code is run without any options for the output file, then the output file will be in the same directory as the Tjakra file with the same name.
 
 <!-- Donation -->
 <h2>
