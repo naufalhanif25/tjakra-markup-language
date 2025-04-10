@@ -5,10 +5,11 @@
  *
  * The process involves the following steps:
  * 1. Parsing command-line arguments to retrieve the input file and optional output path.
- * 2. Reading the source file and tokenizing its contents.
- * 3. Converting the tokens into a structured JSON representation.
- * 4. Rendering the JSON into an HTML document.
- * 5. Using Puppeteer to convert the HTML into a styled PDF with specified paper size and margin.
+ * 2. Handles the include keyword and returns data from the included file.
+ * 3. Reading the source file and tokenizing its contents.
+ * 4. Converting the tokens into a structured JSON representation.
+ * 5. Rendering the JSON into an HTML document.
+ * 6. Using Puppeteer to convert the HTML into a styled PDF with specified paper size and margin.
  * 
  * Additional features:
  * - Predefined paper sizes and margin templates.
@@ -111,8 +112,64 @@ const papersizes = {
 let papersize;
 let margin;
 
+// Variable to hold the page numbers
+let pageNumber = 0;
+
+// Preprocess the source lines to handle include keywords
+function getIncludes(lines) {
+    const result = [];
+
+    lines.forEach((line, index) => {
+        const path = require('path');
+        const trimmed = line.trim();
+
+        // Check for include directive like include: "file.tj"
+        let includeMatch;
+
+        try {
+            if (trimmed.startsWith("@include")) {
+                includeMatch = trimmed.split(":").map((value) => {
+                    return value.trim().replace(';', '').replace(/^["']|["']$/g, '');
+                });
+            }
+
+            if (includeMatch) {
+                const resolvedPath = path.resolve(includeMatch[1]);
+    
+                if (!fs.existsSync(resolvedPath)) {
+                    console.error(`Include file not found: ${resolvedPath} (line ${index + 1})`);
+    
+                    return;
+                }
+    
+                try {
+                    const includedContent = fs.readFileSync(resolvedPath, 'utf-8');
+                    const includedLines = includedContent.split(/\r?\n/);
+    
+                    // Recursively handle includes
+                    result.push(...getIncludes(includedLines, path.dirname(resolvedPath))); 
+                } 
+                catch (err) {
+                    console.error(`Error reading included file ${resolvedPath}: ${err.message} (line ${index + 1})`);
+                }
+            }
+            else {
+                // Keep original line if not include
+                result.push(line); 
+            }
+        }
+        catch (err) {
+            console.error(`Error reading included file (line ${index + 1})`);
+        }
+
+    });
+
+    return result;
+}
+
+
 // Function to perform tokenization (converting source lines into structured tokens)
-function tokenize(line, lineNumber = 0) {   
+function tokenize(line, lineNumber = 0) {
     // Validate input type
     if (typeof line !== 'string') {
         console.error(`Error at line ${lineNumber}: Invalid input, expected a string.`);
@@ -331,6 +388,30 @@ function imgToBase64(src) {
     }
 }
 
+// Function to replace special punctuation placeholders in the format {name} 
+function specialPuncts(input) {
+    // Read the contents of the entities.json file synchronously
+    const jsonData = fs.readFileSync('./assets/entities.json', 'utf8');
+    let entities = JSON.parse(jsonData);
+    let entityMap = {};
+    
+    for (const [key, value] of Object.entries(entities)) {
+        // Match entity keys of the format "&name;"
+        const match = key.match(/^&(\w+);$/);
+
+        // If a match is found, store the mapping: name => &name;
+        if (match) {
+            entityMap[match[1]] = key;
+        }
+    }
+
+    // Replace all occurrences of {name} (not escaped with a backslash) with their entity equivalents
+    return input.replace(/(?<!\\)\{(\w+)\}/g, (match, p1) => {
+        // If the entity name exists in the map, replace it; otherwise keep the original
+        return entityMap[p1] || match;
+    });
+}
+
 // Function to convert JSON structure to an HTML document string
 function jsonToHtml(json) {
     try {
@@ -343,7 +424,7 @@ function jsonToHtml(json) {
         const configStyles = json.config.properties.reduce((acc, prop) => {
             if ([
                 "line-height", "space-bp", "space-ap", "font-family", "font-size", "font-weight", "font-style", 
-                "color", "text-align", "text-decoration", "width", "height"
+                "color", "text-align", "text-decoration", "width", "height", "include"
             ].includes(prop.key)) {
                 acc[prop.key] = prop.value;
             }
@@ -399,10 +480,10 @@ function jsonToHtml(json) {
                 if (prop.key === "content") {
                     // Assign textual content, removing quotes
                     content = prop.value.replace(/^["']|["']$/g, '');
-                } 
+                }
                 else if ([
                     "line-height", "space-bp", "space-ap", "font-family", "font-size", "font-weight", "font-style", 
-                    "color", "text-align", "text-decoration", "width", "height"
+                    "color", "text-align", "text-decoration", "width", "height", "include"
                 ].includes(prop.key)) {
                     styles.push(`${prop.key}: ${prop.value}`);
                 } 
@@ -426,7 +507,7 @@ function jsonToHtml(json) {
                     }
                 }
                 // Header/Footer alignment
-                else if (["header", "footer"].includes(elementName)) {
+                else if (["header", "section", "footer"].includes(elementName)) {
                     if (!["align"].includes(prop.key)) {
                         throw new Error(`Invalid property '${prop.key}' on element '${elementName}'`);
                     }
@@ -450,7 +531,7 @@ function jsonToHtml(json) {
                         } 
                         else if ([
                             "line-height", "space-bp", "space-ap", "font-family", "font-size", "font-weight", "font-style", 
-                            "color", "text-align", "text-decoration", "width", "height"
+                            "color", "text-align", "text-decoration", "width", "height", "include"
                         ].includes(prop.key)) {
                             styles.push(`${prop.key}: ${prop.value}`);
                         } 
@@ -485,7 +566,7 @@ function jsonToHtml(json) {
                             styles.push("margin-left: auto");
                             styles.push("margin-right: auto");
                         }
-                    }                   
+                    }              
                     else {
                         attributes.push(`${prop.key}="${prop.value.replace(/^["']|["']$/g, '')}"`);
                     }
@@ -508,6 +589,9 @@ function jsonToHtml(json) {
             else if (elementName === "link") {
                 return `<a ${attrStr}${styleAttr ? ` ${styleAttr}` : ``}>${content}</a>`
             }
+
+            // Handle all special punctuations contained within the content
+            content = specialPuncts(content);
     
             // Render element with content and children, including inline formatting tags
             return `
@@ -517,6 +601,14 @@ function jsonToHtml(json) {
                         .replace(/\\\{line-break\}/g, '{line-break}')
                         .replace(/(?<!\\)\{tracer-round\}/g, '<hr>')
                         .replace(/\\\{tracer-round\}/g, '{tracer-round}')
+                        .replace(/(?<!\\)\{indent\}/g, '&nbsp;&nbsp;&nbsp;&nbsp;')
+                        .replace(/\\\{indent\}/g, '{indent}')
+                        .replace(/(?<!\\)\{pgnum\}/g, (match) => {
+                            pageNumber += 1;
+                            
+                            return pageNumber;
+                        })
+                        .replace(/\\\{pgnum\}/g, '{pgnum}')
                         .replace(/(?<!\\)\{(b|i|u|sup|sub|hl|del):\s*([^}]+)\}/g, (match, tag, content) => {
                             if (tag === "b") return `<b style="font-weight: bold;">${content}</b>`;
                             if (tag === "i") return `<i style="font-style: italic;">${content}</i>`;
@@ -625,7 +717,18 @@ function jsonToHtml(json) {
     catch (error) {
         console.error(`Error generating HTML: ${error.message}`);
 
-        return "<html><body><h1>Error generating document</h1></body></html>";
+        return `
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                </head>
+                <body>
+                    <h1>Error generating document</h1>
+                </body>
+            </html>
+        `;
     }
 }
 
@@ -644,7 +747,7 @@ async function HtmlToPdf(html, jsonStruct, options) {
         await Promise.all([
             page.setContent(html),  // Set HTML content into the page
             page.pdf({
-                path: options.path || options.source.replace(/\.\w+$/, ".pdf"),  // Output file path
+                path: options.output || options.source.replace(/\.\w+$/, ".pdf"),  // Output file path
                 width: `${papersize.width}in`,  // Page width in inches
                 height: `${papersize.height}in`,  // Page height in inches
                 landscape: false,  // Portrait orientation
@@ -696,7 +799,7 @@ program
     .description("Tjakra is a language used to create PDF documents using simple lines of code.")
     .version("1.0.0-alpha")
     .option("-s, --source <file>", "Specify the Tjakra source file")  // Source input
-    .option("-p, --path <output>", "Specify the output PDF path")  // Optional output path
+    .option("-o, --output <path>", "Specify the output PDF path")  // Optional output path
     .helpOption("-h, --help", "Show help information")  // Help flag
     .showHelpAfterError();  // Automatically show help after errors
 
@@ -729,6 +832,9 @@ if (!options.source) {
 // Read source file and split it into lines
 const lines = fs.readFileSync(options.source, 'utf8').split(/\r?\n/);
 
+// Preprocess include keywords
+const expandedLines = getIncludes(lines);
+
 // If file is empty, abort
 if (lines.length === 0) {
     console.error("Error: The input file is empty.");
@@ -736,7 +842,7 @@ if (lines.length === 0) {
 }
 
 // Tokenize each line using the tokenizer (assumed defined elsewhere)
-lines.forEach(tokenize);
+expandedLines.forEach((line, i) => tokenize(line, i + 1));
 
 let jsonStruct;
 
