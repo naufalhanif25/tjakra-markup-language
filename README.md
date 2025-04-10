@@ -426,8 +426,6 @@ pages: {
             font-size: 10pt;
         }
     }
-
-    @include: "extend.tj";
 }
 </code></pre>
 
